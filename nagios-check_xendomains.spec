@@ -1,6 +1,6 @@
 %define name	nagios-check_xendomains
 %define version	20070528
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 Name:		%{name}
 Version:	%{version}
@@ -10,8 +10,7 @@ Group:		Networking/Other
 License:	BSD
 URL:		http://beta.perseverantia.com/devel/?project=nagiosplug
 Source0:	http://beta.perseverantia.com/devel/src/plugins/check_xendomains.py
-BuildArch:  noarch
-BuildRoot:  %{_tmppath}/%{name}-%{version}
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Plugin for Nagios (written in Python to check Xen's state on a remote host. As
@@ -35,4 +34,3 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %{_libdir}/nagios/plugins/check_xendomains.py
-
