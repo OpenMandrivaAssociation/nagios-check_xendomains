@@ -1,6 +1,6 @@
 %define name	nagios-check_xendomains
 %define version	20070528
-%define release	%mkrel 2
+%define release	%mkrel 3
 
 Name:		%{name}
 Version:	%{version}
@@ -28,9 +28,17 @@ rm -rf %{buildroot}
 install -d -m 755 %{buildroot}%{_libdir}/nagios/plugins
 install -m 755 %{SOURCE0} %{buildroot}%{_libdir}/nagios/plugins
 
+install -d -m 755 %{buildroot}%{_sysconfdir}/nagios/plugins.d
+cat > %{buildroot}%{_sysconfdir}/nagios/plugins.d/check_xendomains.cfg <<EOF
+define command{
+	command_name	check_xendomains
+	command_line	%{_libdir}/nagios/plugins/check_xendomains -H $HOSTADDRESS
+}
+
 %clean
 rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
 %{_libdir}/nagios/plugins/check_xendomains.py
+%config(noreplace) %{_sysconfdir}/nagios/plugins.d/check_xendomains.cfg
