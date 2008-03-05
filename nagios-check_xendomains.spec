@@ -1,6 +1,6 @@
 %define name	nagios-check_xendomains
 %define version	20070528
-%define release	%mkrel 4
+%define release	%mkrel 5
 
 Name:		%{name}
 Version:	%{version}
@@ -10,6 +10,7 @@ Group:		Networking/Other
 License:	BSD
 URL:		http://beta.perseverantia.com/devel/?project=nagiosplug
 Source0:	http://beta.perseverantia.com/devel/src/plugins/check_xendomains.py
+Patch:      check_xendomains-fix-shellbang.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
@@ -18,15 +19,16 @@ for now, it just checks that Xend is running (well, it really checks that
 xend-http-server is running) and lists the nodes running on the remote host.
 
 %prep
+cp %{SOURCE0} check_xendomains.py
+%patch -p0
 
 %build
-
 
 %install
 rm -rf %{buildroot}
 
 install -d -m 755 %{buildroot}%{_libdir}/nagios/plugins
-install -m 755 %{SOURCE0} %{buildroot}%{_libdir}/nagios/plugins
+install -m 755 check_xendomains.py %{buildroot}%{_libdir}/nagios/plugins
 
 install -d -m 755 %{buildroot}%{_sysconfdir}/nagios/plugins.d
 cat > %{buildroot}%{_sysconfdir}/nagios/plugins.d/check_xendomains.cfg <<'EOF'
