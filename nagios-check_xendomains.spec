@@ -1,6 +1,6 @@
 %define name	nagios-check_xendomains
 %define version	20070528
-%define release	%mkrel 5
+%define release	%mkrel 7
 
 Name:		%{name}
 Version:	%{version}
