@@ -1,6 +1,6 @@
 %define name	nagios-check_xendomains
 %define version	20070528
-%define release	%mkrel 8
+%define release	%mkrel 9
 
 Name:		%{name}
 Version:	%{version}
@@ -11,6 +11,7 @@ License:	BSD
 URL:		http://beta.perseverantia.com/devel/?project=nagiosplug
 Source0:	http://beta.perseverantia.com/devel/src/plugins/check_xendomains.py
 Patch:      check_xendomains-fix-shellbang.patch
+BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
@@ -27,20 +28,21 @@ cp %{SOURCE0} check_xendomains.py
 %install
 rm -rf %{buildroot}
 
-install -d -m 755 %{buildroot}%{_libdir}/nagios/plugins
-install -m 755 check_xendomains.py %{buildroot}%{_libdir}/nagios/plugins
+install -d -m 755 %{buildroot}%{_datadir}/nagios/plugins
+install -m 755 check_xendomains.py %{buildroot}%{_datadir}/nagios/plugins/check_xendomains
 
 install -d -m 755 %{buildroot}%{_sysconfdir}/nagios/plugins.d
 cat > %{buildroot}%{_sysconfdir}/nagios/plugins.d/check_xendomains.cfg <<'EOF'
 define command{
 	command_name	check_xendomains
-	command_line	%{_libdir}/nagios/plugins/check_xendomains -H $HOSTADDRESS$
+	command_line	%{_datadir}/nagios/plugins/check_xendomains -H $HOSTADDRESS$
 }
+EOF
 
 %clean
 rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%{_libdir}/nagios/plugins/check_xendomains.py
+%{_datadir}/nagios/plugins/check_xendomains
 %config(noreplace) %{_sysconfdir}/nagios/plugins.d/check_xendomains.cfg
