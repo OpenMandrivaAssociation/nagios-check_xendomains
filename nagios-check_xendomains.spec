@@ -46,3 +46,45 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_datadir}/nagios/plugins/check_xendomains
 %config(noreplace) %{_sysconfdir}/nagios/plugins.d/check_xendomains.cfg
+
+
+%changelog
+* Mon Dec 06 2010 Oden Eriksson <oeriksson@mandriva.com> 20070528-10mdv2011.0
++ Revision: 612985
+- the mass rebuild of 2010.1 packages
+
+* Wed Apr 28 2010 Guillaume Rousse <guillomovitch@mandriva.org> 20070528-9mdv2010.1
++ Revision: 540288
+- this is a noarch plugin
+
+* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 20070528-8mdv2010.0
++ Revision: 430147
+- rebuild
+
+* Tue Jul 29 2008 Thierry Vignaud <tv@mandriva.org> 20070528-7mdv2009.0
++ Revision: 253545
+- rebuild
+
+* Wed Mar 05 2008 Guillaume Rousse <guillomovitch@mandriva.org> 20070528-5mdv2008.1
++ Revision: 180030
+- fix python shellbang to avoid dependency on python 2.4
+
+* Fri Feb 15 2008 Guillaume Rousse <guillomovitch@mandriva.org> 20070528-4mdv2008.1
++ Revision: 168930
+- fix configuration (thanks oden)
+
+* Fri Feb 15 2008 Guillaume Rousse <guillomovitch@mandriva.org> 20070528-3mdv2008.1
++ Revision: 168915
+- add a configuration file
+
+* Fri Feb 15 2008 Oden Eriksson <oeriksson@mandriva.com> 20070528-2mdv2008.1
++ Revision: 168866
+- it can't be a noarch package
+
+* Fri Feb 01 2008 Guillaume Rousse <guillomovitch@mandriva.org> 20070528-1mdv2008.1
++ Revision: 161129
+- import nagios-check_xendomains
+
+
+* Fri Feb 01 2008 Guillaume Rousse <guillomovitch@mandriva.org> 20070528-1mdv2008.1
+- first mandriva package
