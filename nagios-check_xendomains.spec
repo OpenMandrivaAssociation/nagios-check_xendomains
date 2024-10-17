@@ -8,7 +8,7 @@ Release:	%{release}
 Summary:	Nagios Xen plugin
 Group:		Networking/Other
 License:	BSD
-URL:		http://beta.perseverantia.com/devel/?project=nagiosplug
+URL:		https://beta.perseverantia.com/devel/?project=nagiosplug
 Source0:	http://beta.perseverantia.com/devel/src/plugins/check_xendomains.py
 Patch:      check_xendomains-fix-shellbang.patch
 BuildArch:	noarch
